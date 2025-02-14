@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Ingredients</title>
+</head>
+<body>
+    <div id="recipe-container">
+        <% recipes.forEach(recipe => { %>
+            <div class="recipe">
+                <h2><%= recipe.name %></h2>
+                <ul>
+                    <% recipe.ingredients.forEach(ingredient => { %>
+                        <li><%= ingredient %></li>
+                    <% }); %>
+                </ul>
+            </div>
+        <% }); %>
+    </div>
+</body>
+</html>
