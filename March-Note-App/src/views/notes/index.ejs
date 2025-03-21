@@ -1,0 +1,66 @@
+<div class="row">
+    <div class="col-md-12">
+      <h1 class="mb-4">
+        <i class="fas fa-sticky-note mr-2"></i>My Notes
+      </h1>
+      <div class="mb-4">
+        <a href="/notes/add" class="btn btn-dark">
+          <i class="fas fa-plus mr-2"></i>Add New Note
+        </a>
+        <a href="/dashboard" class="btn btn-outline-dark ml-2">
+          <i class="fas fa-arrow-left mr-2"></i>Back to Dashboard
+        </a>
+      </div>
+      
+      <% if(notes && notes.length > 0) { %>
+        <div class="row">
+          <% notes.forEach(note => { %>
+            <div class="col-md-4 mb-4">
+              <div class="card note-card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                  <h5 class="card-title mb-0 text-truncate" style="max-width: 200px;"><%= note.title %></h5>
+                  <div class="dropdown">
+                    <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      <i class="fas fa-ellipsis-v"></i>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                      <a class="dropdown-item" href="/notes/edit/<%= note._id %>">
+                        <i class="fas fa-edit mr-2"></i>Edit
+                      </a>
+                      <form action="/notes/<%= note._id %>?_method=DELETE" method="POST" class="d-inline">
+                        <button type="submit" class="dropdown-item text-danger" onclick="return confirm('Are you sure you want to delete this note?')">
+                          <i class="fas fa-trash-alt mr-2"></i>Delete
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-body">
+                  <p class="note-content"><%= note.content %></p>
+                  <div class="d-flex justify-content-between align-items-center mt-3">
+                    <small class="text-muted">
+                      <i class="far fa-clock mr-1"></i>
+                      <%= new Date(note.createdAt).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) %>
+                    </small>
+                    <a href="/notes/edit/<%= note._id %>" class="btn btn-sm btn-outline-dark">
+                      <i class="fas fa-edit mr-1"></i>Edit
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% }); %>
+        </div>
+      <% } else { %>
+        <div class="card">
+          <div class="card-body text-center">
+            <h5>No notes found</h5>
+            <p>Start by adding your first note!</p>
+            <a href="/notes/add" class="btn btn-dark">
+              <i class="fas fa-plus mr-2"></i>Add Note
+            </a>
+          </div>
+        </div>
+      <% } %>
+    </div>
+  </div>

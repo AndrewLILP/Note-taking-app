@@ -1,0 +1,77 @@
+/* Main Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .container {
+    flex: 1;
+  }
+  
+  /* Note Card Styles */
+  .note-card {
+    transition: transform 0.3s ease;
+    height: 100%;
+  }
+  
+  .note-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+  
+  .note-card .card-body {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .note-content {
+    flex-grow: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+  
+  /* Form Styles */
+  .form-control:focus {
+    border-color: #343a40;
+    box-shadow: 0 0 0 0.2rem rgba(52, 58, 64, 0.25);
+  }
+  
+  .btn-dark {
+    background-color: #343a40;
+  }
+  
+  .btn-dark:hover {
+    background-color: #23272b;
+  }
+  
+  /* Welcome Page */
+  .welcome-heading {
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  
+  .welcome-text {
+    font-size: 1.2rem;
+  }
+  
+  /* Dashboard */
+  .dashboard-welcome {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Auth pages */
+  .auth-card {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  /* Footer */
+  footer {
+    margin-top: auto;
+  }

@@ -1,0 +1,46 @@
+<div class="row">
+    <div class="col-md-8 m-auto">
+      <div class="card">
+        <div class="card-header bg-dark text-white">
+          <h1 class="h4 mb-0">
+            <i class="fas fa-plus-circle mr-2"></i>Add New Note
+          </h1>
+        </div>
+        <div class="card-body">
+          <form action="/notes" method="POST">
+            <div class="form-group">
+              <label for="title">Title</label>
+              <input
+                type="text"
+                id="title"
+                name="title"
+                class="form-control"
+                placeholder="Enter note title"
+                value="<%= typeof noteTitle != 'undefined' ? noteTitle : '' %>"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="content">Content</label>
+              <textarea
+                id="content"
+                name="content"
+                class="form-control"
+                rows="6"
+                placeholder="Enter note content"
+                required
+              ><%= typeof content != 'undefined' ? content : '' %></textarea>
+            </div>
+            <div class="d-flex justify-content-between mt-4">
+              <a href="/notes" class="btn btn-outline-secondary">
+                <i class="fas fa-arrow-left mr-2"></i>Cancel
+              </a>
+              <button type="submit" class="btn btn-dark">
+                <i class="fas fa-save mr-2"></i>Save Note
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -1,0 +1,39 @@
+<div class="row mt-4">
+    <div class="col-md-12">
+      <h1 class="dashboard-welcome">
+        <i class="fas fa-user-circle mr-2"></i>Welcome, <%= name %>
+      </h1>
+      <div class="card mb-4">
+        <div class="card-body">
+          <h5 class="card-title"><i class="fas fa-info-circle mr-2"></i>Dashboard Overview</h5>
+          <p class="card-text">
+            This is your personal dashboard. From here, you can manage all your notes.
+          </p>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card mb-3">
+                <div class="card-body text-center">
+                  <h5 class="card-title"><i class="fas fa-sticky-note mr-2"></i>My Notes</h5>
+                  <p class="card-text">View and manage all your existing notes</p>
+                  <a href="/notes" class="btn btn-dark">
+                    <i class="fas fa-list mr-2"></i>View Notes
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="card mb-3">
+                <div class="card-body text-center">
+                  <h5 class="card-title"><i class="fas fa-plus-circle mr-2"></i>New Note</h5>
+                  <p class="card-text">Create a new note to add to your collection</p>
+                  <a href="/notes/add" class="btn btn-dark">
+                    <i class="fas fa-plus mr-2"></i>Add Note
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
