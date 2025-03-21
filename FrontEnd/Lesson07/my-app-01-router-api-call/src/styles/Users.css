@@ -1,0 +1,17 @@
+/* Users.css */
+.users-container {
+    max-width: 600px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  .user-card {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+  }
+  .user-card a {
+    color: #007bff;
+    text-decoration: none;
+  }

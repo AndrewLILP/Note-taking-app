@@ -1,0 +1,14 @@
+/* UserDetails.css */
+.user-detail {
+    max-width: 400px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  }
+  .loading {
+    text-align: center;
+    font-size: 1.2rem;
+    color: gray;
+  }

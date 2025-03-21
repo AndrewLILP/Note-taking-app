@@ -1,0 +1,9 @@
+/* App.css */
+.app-container {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  min-height: 100vh;
+}
+.content {
+  padding: 20px;
+}
