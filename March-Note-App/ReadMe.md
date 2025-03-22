@@ -1,3 +1,153 @@
+Update 3
+
+# March Note App
+
+A simple and secure note-taking application built with Node.js, Express, MongoDB, and Passport.js for authentication.
+
+## Features
+
+- User authentication (register, login, logout)
+- Create, read, update, and delete notes
+- Secure password storage with bcrypt
+- Protected routes for authenticated users
+- Responsive design with Bootstrap
+
+## Prerequisites
+
+- Node.js (v12.0.0 or higher)
+- MongoDB (local instance or Atlas)
+- Git
+
+## Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/AndrewLILP/March-Note-App.git
+cd March-Note-App
+```
+
+2. Install dependencies:
+
+```bash
+npm install
+```
+
+3. Create a `.env` file in the root directory with the following variables:
+
+```
+PORT=3000
+MONGODB_URI=mongodb://localhost:27017/march-note-app
+SESSION_SECRET=your_secret_key_here
+```
+
+Replace `your_secret_key_here` with a strong random string for session security.
+
+## Database Setup
+
+Ensure MongoDB is running on your system. The application will automatically:
+
+- Connect to the MongoDB instance specified in your `.env` file
+- Create the necessary collections (users, notes)
+
+## Running the Application
+
+Start the application in development mode:
+
+```bash
+npm start
+```
+
+The application should now be running at `http://localhost:3000`.
+
+## Project Structure
+
+```
+project/
+├── src/
+│   ├── config/
+│   │   └── passport.js       # Passport.js configuration
+│   ├── middleware/
+│   │   └── auth.js           # Authentication middleware
+│   ├── models/
+│   │   ├── User.js           # User model schema
+│   │   └── Note.js           # Note model schema
+│   ├── public/
+│   │   └── css/
+│   │       └── style.css     # Custom styles
+│   ├── routes/
+│   │   ├── auth.js           # Authentication routes
+│   │   ├── index.js          # Main routes
+│   │   └── notes.js          # Note management routes
+│   └── views/
+│       ├── auth/
+│       │   ├── login.ejs     # Login form
+│       │   └── register.ejs  # Registration form
+│       ├── notes/
+│       │   ├── add.ejs       # Add note form
+│       │   ├── edit.ejs      # Edit note form
+│       │   └── index.ejs     # Notes list
+│       ├── partials/
+│       │   └── messages.ejs  # Flash messages
+│       ├── dashboard.ejs     # User dashboard
+│       ├── layout.ejs        # Main layout
+│       └── welcome.ejs       # Welcome page
+└── app.js                    # Main application file
+```
+
+## Usage
+
+1. Register a new account at `/auth/register`
+2. Log in with your credentials at `/auth/login`
+3. View your dashboard at `/dashboard`
+4. Manage your notes at `/notes`
+5. Add new notes at `/notes/add`
+6. Edit notes at `/notes/edit/:id`
+7. Log out at `/auth/logout`
+
+## Authentication Flow
+
+1. **Registration**: Users provide name, email, and password. Passwords are hashed before storage.
+2. **Login**: Users authenticate with email and password. Passport.js handles authentication.
+3. **Session**: Express session maintains user login state.
+4. **Protected Routes**: Middleware ensures only authenticated users can access certain pages.
+5. **Logout**: Terminates the user's session.
+
+## Security Features
+
+- Passwords are hashed using bcrypt
+- Protected routes with authentication middleware
+- Session management with express-session
+- Input validation for registrations and form submissions
+
+## Dependencies
+
+Key packages used in this project:
+
+- express: Web framework
+- mongoose: MongoDB ODM
+- passport and passport-local: Authentication
+- bcryptjs: Password hashing
+- express-session: Session management
+- connect-flash: Flash messages
+- ejs: Templating engine
+- method-override: HTTP method override for PUT/DELETE requests
+
+## Development
+
+To contribute to this project:
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature-name`
+3. Commit your changes: `git commit -m 'Add some feature'`
+4. Push to the branch: `git push origin feature-name`
+5. Open a pull request
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+
 Update 2:
 
 Updated Checklist - All Complete!

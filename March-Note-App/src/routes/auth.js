@@ -39,19 +39,25 @@ router.post('/register', async (req, res) => {
     errors.push({ msg: 'Password should be at least 6 characters' });
   }
 
+  // Basic email validation
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) {
+    errors.push({ msg: 'Please enter a valid email address' });
+  }
+
   if (errors.length > 0) {
     res.render('auth/register', {
       title: 'Register',
       errors,
       name,
       email,
-      password,
-      password2
+      password: '',
+      password2: ''
     });
   } else {
     try {
       // Check if user exists
-      const existingUser = await User.findOne({ email });
+      const existingUser = await User.findOne({ email: email.toLowerCase() });
       
       if (existingUser) {
         errors.push({ msg: 'Email is already registered' });
@@ -60,15 +66,15 @@ router.post('/register', async (req, res) => {
           errors,
           name,
           email,
-          password,
-          password2
+          password: '',
+          password2: ''
         });
       }
 
       // Create new user
       const newUser = new User({
         name,
-        email,
+        email: email.toLowerCase(),
         password
       });
 
@@ -104,6 +110,43 @@ router.get('/logout', (req, res, next) => {
     req.flash('success_msg', 'You are logged out');
     res.redirect('/auth/login');
   });
+});
+
+// Password Reset Request Page
+router.get('/forgot-password', forwardAuthenticated, (req, res) => {
+  res.render('auth/forgot-password', {
+    title: 'Forgot Password'
+  });
+});
+
+// Password Reset Request Handle
+router.post('/forgot-password', async (req, res) => {
+  const { email } = req.body;
+  
+  if (!email) {
+    req.flash('error_msg', 'Please enter your email address');
+    return res.redirect('/auth/forgot-password');
+  }
+
+  try {
+    const user = await User.findOne({ email: email.toLowerCase() });
+    
+    if (!user) {
+      // Don't reveal user existence, but show success message anyway
+      req.flash('success_msg', 'If an account with that email exists, password reset instructions have been sent');
+      return res.redirect('/auth/login');
+    }
+
+    // In a real application, generate a secure token and send password reset email
+    // For this example, we'll just simulate the process
+    
+    req.flash('success_msg', 'If an account with that email exists, password reset instructions have been sent');
+    res.redirect('/auth/login');
+  } catch (err) {
+    console.error(err);
+    req.flash('error_msg', 'An error occurred');
+    res.redirect('/auth/forgot-password');
+  }
 });
 
 module.exports = router;
